@@ -17,6 +17,8 @@ class Worker(object):
 
     def create_app(self):
 
+        app_dir = ['static', 'templates', 'main']
+
         app_code = """from app import create_app\n\
 app = create_app(debug=True)\n\
 
@@ -28,12 +30,12 @@ if __name__ == '__main__':
 
             f.write(app_code)
 
-
         os.mkdir('app')
         os.chdir('app')
-        os.mkdir('static')
-        os.mkdir('template')
-        os.mkdir('main')
+
+        for name in app_dir:
+
+            os.mkdir(name)
 
         init_code = """from flask import Flask\n\
 def create_app(debug=True):\n\
@@ -49,7 +51,7 @@ def create_app(debug=True):\n\
 
     def create_react(self):
 
-        os.chdir(os.path.abspath('template'))
+        os.chdir(os.path.abspath('templates'))
 
         html_code = """
 <!DOCTYPE html>
@@ -72,9 +74,9 @@ def create_app(debug=True):\n\
 
         os.chdir(os.path.abspath('../static/'))
 
-        with open('webpack.config.js','w') as f:
+        with open('webpack.config.js', 'w') as f:
 
-            webpack_code="""
+            webpack_code = """
 var path = require('path');
 var webpack = require('webpack');
 
@@ -157,12 +159,12 @@ module.exports = {
     "react-loader": "^2.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.6",
-    "webpack": "^1.13.0",
+    "webpack": "^1.13.0"
   },
   "devDependencies": {
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \\"Error: no test specified\\" && exit 1"
   },
   "author": "",
   "license": ""
