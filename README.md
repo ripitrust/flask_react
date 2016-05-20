@@ -1,11 +1,12 @@
-* Flask React 
-*** Quickly setup an app with flask as backend and React as frontend
+# Flask React 
+###Quickly setup an app with flask as backend and React as frontend
 
-*** Usage
+##Usage
 
 `
 pip install dist/*.gz
 `
 
-'
-flask_react -n -p'
+`
+flask_react -n -p
+`
