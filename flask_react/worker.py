@@ -59,7 +59,7 @@ def create_app(debug=True):\n\
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <script src = "../static/dist/vendor.bundle.js"></script>
-    <title>Ultron</title>
+    <title>Project</title>
   </head>
   <body>
     <div id="app"></div>
@@ -83,22 +83,29 @@ var webpack = require('webpack');
 var ROOT_PATH = path.resolve(__dirname);
 var node_modules_dir = path.resolve(__dirname, 'node_modules');
 
+var plugin = [];
+
+if (process.env.NODE_ENV === 'production') {
+
+    plugin.push( new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false }, output: {comments:false} }));
+
+}
+
+plugin.push(new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"));
 
 module.exports = {
     entry: {
 
         vendor:[
+            'react',
+            'react-dom'
         ],
         main: [
                 "./src/app/index.js",
         ]
         },
 
-    plugins:[
-        new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
-        //new webpack.ProvidePlugin({$: "jquery", jQuery:"jquery","window.jQuery": "jquery","window.$": "jquery"}),
-        //new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false }})
-        ],
+    plugins: plugin,
 
     output: {
         path: path.resolve(ROOT_PATH , 'dist'),
@@ -126,9 +133,7 @@ module.exports = {
     }
   };"""
 
-
             f.write(webpack_code)
-
 
         with open('package.json', 'w') as f:
 
