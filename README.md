@@ -1,14 +1,14 @@
 # Flask React 
-###Quickly setup an app with flask as backend and React as frontend
+###Quickly setup an app with Flask as backend and React as frontend
 
 ##Install
 
-`
+` sh
 pip install flask_react
 `
 
 ##Usage
-`
+` sh
 flask_react [project name] 
 `
 
