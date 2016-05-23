@@ -1,12 +1,18 @@
 # Flask React 
 ###Quickly setup an app with flask as backend and React as frontend
 
+##Install
+
+`
+pip install flask_react
+`
+
 ##Usage
+`
+flask_react [project name] 
+`
 
-`
-pip install dist/*.gz
-`
+##Option
 
-`
-flask_react -n -p
-`
+`-p`, `--path`: Custom the project path, default : current path
+`-h`, `--help`: Display help message
