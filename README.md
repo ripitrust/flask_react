@@ -15,4 +15,5 @@ flask_react [project name]
 ##Option
 
 `-p`, `--path`: Custom the project path, default : current path
+
 `-h`, `--help`: Display help message
